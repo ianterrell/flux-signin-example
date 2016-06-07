@@ -23,6 +23,6 @@ enum Result<S,E> {
 }
 
 protocol SignInAPI {
-    func signIn(email: String, password: String, completion: Result<User,SignInAPIError>->())
+    func signIn(email email: String, password: String, completion: Result<User,SignInAPIError>->())
 }
 

@@ -27,7 +27,7 @@ struct MockAPI: SignInAPI {
         }
     }
 
-    func signIn(email: String, password: String, completion: Result<User,SignInAPIError>->()) {
+    func signIn(email email: String, password: String, completion: Result<User,SignInAPIError>->()) {
         let constantResponseTime: Int64 = 100
         let variableResponseTime = Int64(arc4random_uniform(1400))
         let responseTime = dispatch_time(DISPATCH_TIME_NOW, (constantResponseTime + variableResponseTime) * Int64(NSEC_PER_MSEC))
