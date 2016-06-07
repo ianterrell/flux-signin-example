@@ -47,4 +47,26 @@ extension SignInViewController: UITextFieldDelegate {
 
         return true
     }
+
+    func textFieldDidBeginEditing(textField: UITextField) {
+        switch textField {
+        case emailField:
+            break
+        case passwordField:
+            break
+        default:
+            break
+        }
+    }
+
+    func textFieldDidEndEditing(textField: UITextField) {
+        switch textField {
+        case emailField:
+            break
+        case passwordField:
+            break
+        default:
+            break
+        }
+    }
 }
