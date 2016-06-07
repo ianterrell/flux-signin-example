@@ -97,8 +97,8 @@
                                         <color key="backgroundColor" red="0.74499833579999997" green="0.14714938399999999" blue="0.1841185689" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="mw1-ox-oEA" firstAttribute="leading" secondItem="8iA-1w-tse" secondAttribute="leadingMargin" id="XdV-t1-xVw"/>
-                                            <constraint firstItem="mw1-ox-oEA" firstAttribute="top" secondItem="8iA-1w-tse" secondAttribute="topMargin" id="aos-Ds-w0k"/>
-                                            <constraint firstItem="mw1-ox-oEA" firstAttribute="bottom" secondItem="8iA-1w-tse" secondAttribute="bottomMargin" id="beM-UR-oVV"/>
+                                            <constraint firstItem="mw1-ox-oEA" firstAttribute="top" secondItem="8iA-1w-tse" secondAttribute="topMargin" priority="750" id="aos-Ds-w0k"/>
+                                            <constraint firstItem="mw1-ox-oEA" firstAttribute="bottom" secondItem="8iA-1w-tse" secondAttribute="bottomMargin" priority="750" id="beM-UR-oVV"/>
                                             <constraint firstItem="mw1-ox-oEA" firstAttribute="trailing" secondItem="8iA-1w-tse" secondAttribute="trailingMargin" id="gcx-0j-uQW"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="12" left="12" bottom="12" right="12"/>
