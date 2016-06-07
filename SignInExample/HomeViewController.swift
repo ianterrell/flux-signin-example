@@ -21,4 +21,8 @@ class HomeViewController: UIViewController {
             signIn.api = api
         }
     }
+
+    @IBAction func signOut(sender: AnyObject) {
+
+    }
 }

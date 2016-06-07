@@ -61,7 +61,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <barButtonItem title="Sign Out" id="UAb-XV-6O7"/>
+                <barButtonItem title="Sign Out" id="UAb-XV-6O7">
+                    <connections>
+                        <action selector="signOut:" destination="BYZ-38-t0r" id="CRh-af-rei"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="-103" y="437"/>
         </scene>
