@@ -43,7 +43,7 @@ struct MockAPI: SignInAPI {
             }
 
             guard user.password == password else {
-                completion(.error(Error.noSuchUser))
+                completion(.error(Error.invalidPassword))
                 return
             }
 
