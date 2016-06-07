@@ -31,3 +31,20 @@ class SignInViewController: UIViewController {
 
     }
 }
+
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        switch textField {
+        case emailField:
+            passwordField.becomeFirstResponder()
+        case passwordField:
+            passwordField.resignFirstResponder()
+            signIn()
+        default:
+            break
+        }
+
+        return true
+    }
+}
