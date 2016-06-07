@@ -22,16 +22,80 @@ class SignInViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     var api: SignInAPI!
-    
+
+    var emailEditedOnce = false
+    var passwordEditedOnce = false
+
     @IBAction func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func signIn() {
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
 
+        let (_, _, formIsValid) = isValid()
+        guard formIsValid, let email = emailField.text, let password = passwordField.text else {
+            return
+        }
+
+        signInButton.hidden = true
+        activityIndicator.hidden = false
+        serverErrorView.hidden = true
+
+        api.signIn(email: email, password: password) { [weak self] result in
+            guard let sself = self else {
+                return
+            }
+
+            dispatch_async(dispatch_get_main_queue()) {
+                sself.activityIndicator.hidden = true
+                switch result {
+                case .success(_):
+                    sself.dismiss()
+                case .error(let e):
+                    sself.signInButton.hidden = false
+                    sself.serverErrorLabel.text = e.message
+                    sself.serverErrorView.hidden = false
+                }
+            }
+        }
     }
 }
 
+
+// MARK: - Lifecycle Methods
+
+extension SignInViewController {
+    override func viewDidLoad() {
+        emailField.addTarget(self, action: #selector(validate), forControlEvents: .EditingChanged)
+        passwordField.addTarget(self, action: #selector(validate), forControlEvents: .EditingChanged)
+
+        serverErrorView.hidden = true
+        emailErrorLabel.hidden = true
+        passwordErrorLabel.hidden = true
+    }
+}
+
+// MARK: - Validation
+
+extension SignInViewController {
+    func validate() {
+        let (emailIsValid, passwordIsValid, formIsValid) = isValid()
+        emailErrorLabel.hidden = !emailEditedOnce || emailIsValid
+        passwordErrorLabel.hidden = !passwordEditedOnce || passwordIsValid
+        signInButton.enabled = formIsValid
+    }
+
+    func isValid() -> (email: Bool, password: Bool, form: Bool) {
+        let email = Validation.isValidEmail(emailField.text ?? "")
+        let password = Validation.isValidPassword(passwordField.text ?? "")
+        let form = email && password
+        return (email: email, password: password, form: form)
+    }
+}
+
+// MARK: - UITextFieldDelegate
 
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -48,25 +112,16 @@ extension SignInViewController: UITextFieldDelegate {
         return true
     }
 
-    func textFieldDidBeginEditing(textField: UITextField) {
-        switch textField {
-        case emailField:
-            break
-        case passwordField:
-            break
-        default:
-            break
-        }
-    }
-
     func textFieldDidEndEditing(textField: UITextField) {
         switch textField {
         case emailField:
-            break
+            emailEditedOnce = true
         case passwordField:
-            break
+            passwordEditedOnce = true
         default:
             break
         }
+
+        validate()
     }
 }
