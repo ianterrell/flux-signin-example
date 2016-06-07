@@ -18,6 +18,7 @@
 		D920AE3F1D05FE1C002CD8FE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920AE3E1D05FE1C002CD8FE /* API.swift */; };
 		D920AE411D060E3D002CD8FE /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920AE401D060E3C002CD8FE /* MockAPI.swift */; };
 		D920AE431D0614FF002CD8FE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920AE421D0614FF002CD8FE /* Extensions.swift */; };
+		D9D3EC2E1D074F320028E3AA /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3EC2D1D074F320028E3AA /* Validation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D920AE3E1D05FE1C002CD8FE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D920AE401D060E3C002CD8FE /* MockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		D920AE421D0614FF002CD8FE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D9D3EC2D1D074F320028E3AA /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				D920AE3E1D05FE1C002CD8FE /* API.swift */,
 				D920AE401D060E3C002CD8FE /* MockAPI.swift */,
 				D920AE421D0614FF002CD8FE /* Extensions.swift */,
+				D9D3EC2D1D074F320028E3AA /* Validation.swift */,
 				D91A46031D05E4CE0043D588 /* Main.storyboard */,
 				D91A46081D05E4CE0043D588 /* LaunchScreen.storyboard */,
 				D91A46061D05E4CE0043D588 /* Assets.xcassets */,
@@ -274,6 +277,7 @@
 				D920AE3F1D05FE1C002CD8FE /* API.swift in Sources */,
 				D920AE411D060E3D002CD8FE /* MockAPI.swift in Sources */,
 				D91A46301D05E9840043D588 /* HomeViewController.swift in Sources */,
+				D9D3EC2E1D074F320028E3AA /* Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
