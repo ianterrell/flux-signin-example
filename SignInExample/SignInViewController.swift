@@ -21,7 +21,7 @@ class SignInViewController: UIViewController {
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
-    var api: SignInAPI!
+    var api: SignInService!
 
     var emailEditedOnce = false
     var passwordEditedOnce = false
@@ -68,8 +68,8 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController {
     override func viewDidLoad() {
-        emailField.addTarget(self, action: #selector(validate), forControlEvents: .EditingChanged)
-        passwordField.addTarget(self, action: #selector(validate), forControlEvents: .EditingChanged)
+        emailField.addTarget(self, action: .validate, forControlEvents: .EditingChanged)
+        passwordField.addTarget(self, action: .validate, forControlEvents: .EditingChanged)
 
         serverErrorView.hidden = true
         emailErrorLabel.hidden = true
@@ -124,4 +124,8 @@ extension SignInViewController: UITextFieldDelegate {
 
         validate()
     }
+}
+
+extension Selector {
+    static let validate = #selector(SignInViewController.validate)
 }

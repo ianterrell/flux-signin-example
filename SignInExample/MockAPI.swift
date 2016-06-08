@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct MockAPI: SignInAPI {
+struct MockAPI: SignInService {
     static let users = [
         "mark@facebook.com": (password: "dadada", data: User(name: "Mark", token: "fb123")),
         ]
 
-    enum Error: SignInAPIError {
+    enum Error: ServiceError {
         case noSuchUser
         case invalidPassword
         case serverError
@@ -27,7 +27,7 @@ struct MockAPI: SignInAPI {
         }
     }
 
-    func signIn(email email: String, password: String, completion: Result<User,SignInAPIError>->()) {
+    func signIn(email email: String, password: String, completion: Result<User,ServiceError>->()) {
         let constantResponseTime: Int64 = 100
         let variableResponseTime = Int64(arc4random_uniform(1400))
         let responseTime = dispatch_time(DISPATCH_TIME_NOW, (constantResponseTime + variableResponseTime) * Int64(NSEC_PER_MSEC))
@@ -47,8 +47,12 @@ struct MockAPI: SignInAPI {
                 return
             }
 
+            User.postNotification(.signedIn, object: Box(contents: user.data))
             completion(.success(user.data))
         }
     }
-}
 
+    func signOut() {
+        User.postNotification(.signedOut)
+    }
+}
