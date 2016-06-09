@@ -21,10 +21,27 @@ class SignInViewController: UIViewController {
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
-    var api: SignInService!
+    var viewModel: SignInViewModel!
 
-    var emailEditedOnce = false
-    var passwordEditedOnce = false
+    func inject(api api: SignInService) {
+        viewModel = SignInViewModel(api: api)
+    }
+
+    override func viewDidLoad() {
+        viewModel.serverError.bindTo(serverErrorLabel.bnd_text)
+        viewModel.serverError.map{ $0 == nil }.bindTo(serverErrorView.bnd_hidden)
+
+        viewModel.email.bidirectionalBindTo(emailField.bnd_text)
+        viewModel.isEmailValid.bindTo(emailErrorLabel.bnd_hidden)
+
+        viewModel.password.bidirectionalBindTo(passwordField.bnd_text)
+        viewModel.isPasswordValid.bindTo(passwordErrorLabel.bnd_hidden)
+
+        viewModel.isFormValid.bindTo(signInButton.bnd_enabled)
+
+        viewModel.isSigningIn.bindTo(signInButton.bnd_hidden)
+        viewModel.isSigningIn.map{ !$0 }.bindTo(activityIndicator.bnd_hidden)
+    }
 
     @IBAction func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -34,64 +51,11 @@ class SignInViewController: UIViewController {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
 
-        let (_, _, formIsValid) = isValid()
-        guard formIsValid, let email = emailField.text, let password = passwordField.text else {
-            return
-        }
-
-        signInButton.hidden = true
-        activityIndicator.hidden = false
-        serverErrorView.hidden = true
-
-        api.signIn(email: email, password: password) { [weak self] result in
-            guard let sself = self else {
-                return
-            }
-
-            dispatch_async(dispatch_get_main_queue()) {
-                sself.activityIndicator.hidden = true
-                switch result {
-                case .success(_):
-                    sself.dismiss()
-                case .error(let e):
-                    sself.signInButton.hidden = false
-                    sself.serverErrorLabel.text = e.message
-                    sself.serverErrorView.hidden = false
-                }
+        viewModel.signIn { [weak self] success in
+            if success {
+                self?.dismiss()
             }
         }
-    }
-}
-
-
-// MARK: - Lifecycle Methods
-
-extension SignInViewController {
-    override func viewDidLoad() {
-        emailField.addTarget(self, action: .validate, forControlEvents: .EditingChanged)
-        passwordField.addTarget(self, action: .validate, forControlEvents: .EditingChanged)
-
-        serverErrorView.hidden = true
-        emailErrorLabel.hidden = true
-        passwordErrorLabel.hidden = true
-    }
-}
-
-// MARK: - Validation
-
-extension SignInViewController {
-    func validate() {
-        let (emailIsValid, passwordIsValid, formIsValid) = isValid()
-        emailErrorLabel.hidden = !emailEditedOnce || emailIsValid
-        passwordErrorLabel.hidden = !passwordEditedOnce || passwordIsValid
-        signInButton.enabled = formIsValid
-    }
-
-    func isValid() -> (email: Bool, password: Bool, form: Bool) {
-        let email = Validation.isValidEmail(emailField.text ?? "")
-        let password = Validation.isValidPassword(passwordField.text ?? "")
-        let form = email && password
-        return (email: email, password: password, form: form)
     }
 }
 
@@ -115,17 +79,11 @@ extension SignInViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         switch textField {
         case emailField:
-            emailEditedOnce = true
+            viewModel.emailEditedOnce.value = true
         case passwordField:
-            passwordEditedOnce = true
+            viewModel.passwordEditedOnce.value = true
         default:
             break
         }
-
-        validate()
     }
-}
-
-extension Selector {
-    static let validate = #selector(SignInViewController.validate)
 }

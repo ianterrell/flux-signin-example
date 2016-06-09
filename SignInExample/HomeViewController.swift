@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 
 class HomeViewController: UIViewController {
     @IBOutlet var signInButton: UIBarButtonItem!
@@ -14,64 +15,30 @@ class HomeViewController: UIViewController {
 
     @IBOutlet var helloLabel: UILabel!
 
-    var user: User? {
-        didSet {
-            updateMessage()
-        }
-    }
-
     var api: SignInService!
+    var viewModel: HomeViewModel!
+
+    func inject(api api: SignInService) {
+        self.api = api
+        viewModel = HomeViewModel(api: api)
+    }
 
     override func viewDidLoad() {
-        User.addObserver(self, selector: .signedIn, notification: .signedIn)
-        User.addObserver(self, selector: .signedOut, notification: .signedOut)
-        updateMessage()
+        viewModel.greeting.bindTo(helloLabel.bnd_text)
+        viewModel.user.map{$0 != nil}.observe { [unowned self] in self.updateAuthenticationStatus($0) }
     }
 
-    deinit {
-        User.notificationCenter.removeObserver(self)
+    func updateAuthenticationStatus(signedIn: Bool) {
+        navigationItem.rightBarButtonItem = signedIn ? signOutButton : signInButton
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let signIn: SignInViewController = segue.destinationViewController.injectable() {
-            signIn.api = api
+            signIn.inject(api: api)
         }
     }
 
     @IBAction func signOut(sender: AnyObject) {
-        api.signOut()
+        viewModel.signOut()
     }
-
-    func updateMessage() {
-        helloLabel?.text = greetingMessage
-    }
-
-    var greetingMessage: String {
-        guard let user = user else {
-            return "Hello!"
-        }
-
-        return "Hello, \(user.name)!"
-    }
-}
-
-
-extension HomeViewController {
-    func signedIn(notification: NSNotification) {
-        guard let box = notification.object as? Box<User> else {
-            preconditionFailure("Notification should only be sent with a Box<User>")
-        }
-        navigationItem.rightBarButtonItem = signOutButton
-        user = box.contents
-    }
-
-    func signedOut() {
-        navigationItem.rightBarButtonItem = signInButton
-        user = nil
-    }
-}
-
-extension Selector {
-    static let signedIn = #selector(HomeViewController.signedIn(_:))
-    static let signedOut = #selector(HomeViewController.signedOut)
 }
