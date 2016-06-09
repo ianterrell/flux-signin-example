@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3B30A2E450353941AE4B1912B7F2DCA28236DA4A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D78924967B5ECB0A1D20E197FAB93ACBFA47F0D1" : 0,
+    "3B30A2E450353941AE4B1912B7F2DCA28236DA4A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AE42B4C8-918B-4EE1-989D-F641E61DF9B2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D78924967B5ECB0A1D20E197FAB93ACBFA47F0D1" : "signin-example\/Bond\/",
+    "3B30A2E450353941AE4B1912B7F2DCA28236DA4A" : "signin-example\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SignInExample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SignInExample.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ianterrell\/flux-signin-example.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B30A2E450353941AE4B1912B7F2DCA28236DA4A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:SwiftBond\/Bond.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D78924967B5ECB0A1D20E197FAB93ACBFA47F0D1"
+    }
+  ]
+}

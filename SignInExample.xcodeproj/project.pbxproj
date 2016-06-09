@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D917DE681D09ECC3001F56F1 /* Bond.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D3EC3A1D09EC750028E3AA /* Bond.framework */; };
+		D917DE6A1D09ECEE001F56F1 /* Bond.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9D3EC3A1D09EC750028E3AA /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D91A46001D05E4CE0043D588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A45FF1D05E4CE0043D588 /* AppDelegate.swift */; };
 		D91A46051D05E4CE0043D588 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D91A46031D05E4CE0043D588 /* Main.storyboard */; };
 		D91A46071D05E4CE0043D588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D91A46061D05E4CE0043D588 /* Assets.xcassets */; };
@@ -22,6 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D917DE5F1D09ECBC001F56F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 69491BAD1A7C217100A13B6B;
+			remoteInfo = Bond;
+		};
 		D91A46111D05E4CE0043D588 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D91A45F41D05E4CE0043D588 /* Project object */;
@@ -36,7 +45,69 @@
 			remoteGlobalIDString = D91A45FB1D05E4CE0043D588;
 			remoteInfo = SignInExample;
 		};
+		D9D3EC391D09EC750028E3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 69491BAE1A7C217100A13B6B;
+			remoteInfo = Bond;
+		};
+		D9D3EC3B1D09EC750028E3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 69491BB91A7C217100A13B6B;
+			remoteInfo = BondTests;
+		};
+		D9D3EC3D1D09EC750028E3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCA979691A83C3A100DD4A30;
+			remoteInfo = BondOSX;
+		};
+		D9D3EC3F1D09EC750028E3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCA979731A83C3A200DD4A30;
+			remoteInfo = BondOSXTests;
+		};
+		D9D3EC411D09EC750028E3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03ACB4FE1AB555D6001B3E64;
+			remoteInfo = iOSAppForTesting;
+		};
+		D9D3EC431D09EC750028E3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B56989C21BD8A00C00927A6B;
+			remoteInfo = BondtvOS;
+		};
+		D9D3EC451D09EC750028E3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5616DBB1BD8A39E0016CCB4;
+			remoteInfo = tvOSAppForTesting;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D917DE691D09ECE2001F56F1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D917DE6A1D09ECEE001F56F1 /* Bond.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D91A45FC1D05E4CE0043D588 /* SignInExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +128,7 @@
 		D920AE401D060E3C002CD8FE /* MockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		D920AE421D0614FF002CD8FE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D9D3EC2D1D074F320028E3AA /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bond.xcodeproj; path = Bond/Bond.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D917DE681D09ECC3001F56F1 /* Bond.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				D91A45FE1D05E4CE0043D588 /* SignInExample */,
+				D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */,
 				D91A46131D05E4CE0043D588 /* SignInExampleTests */,
 				D91A461E1D05E4CE0043D588 /* SignInExampleUITests */,
 				D91A45FD1D05E4CE0043D588 /* Products */,
@@ -140,6 +214,20 @@
 			path = SignInExampleUITests;
 			sourceTree = "<group>";
 		};
+		D9D3EC301D09EC740028E3AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9D3EC3A1D09EC750028E3AA /* Bond.framework */,
+				D9D3EC3C1D09EC750028E3AA /* BondTests.xctest */,
+				D9D3EC3E1D09EC750028E3AA /* Bond.framework */,
+				D9D3EC401D09EC750028E3AA /* BondOSXTests.xctest */,
+				D9D3EC421D09EC750028E3AA /* iOSAppForTesting.app */,
+				D9D3EC441D09EC750028E3AA /* Bond.framework */,
+				D9D3EC461D09EC750028E3AA /* tvOSAppForTesting.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,10 +238,12 @@
 				D91A45F81D05E4CE0043D588 /* Sources */,
 				D91A45F91D05E4CE0043D588 /* Frameworks */,
 				D91A45FA1D05E4CE0043D588 /* Resources */,
+				D917DE691D09ECE2001F56F1 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D917DE601D09ECBC001F56F1 /* PBXTargetDependency */,
 			);
 			name = SignInExample;
 			productName = SignInExample;
@@ -230,6 +320,12 @@
 			mainGroup = D91A45F31D05E4CE0043D588;
 			productRefGroup = D91A45FD1D05E4CE0043D588 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D9D3EC301D09EC740028E3AA /* Products */;
+					ProjectRef = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D91A45FB1D05E4CE0043D588 /* SignInExample */,
@@ -238,6 +334,58 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D9D3EC3A1D09EC750028E3AA /* Bond.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bond.framework;
+			remoteRef = D9D3EC391D09EC750028E3AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9D3EC3C1D09EC750028E3AA /* BondTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BondTests.xctest;
+			remoteRef = D9D3EC3B1D09EC750028E3AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9D3EC3E1D09EC750028E3AA /* Bond.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bond.framework;
+			remoteRef = D9D3EC3D1D09EC750028E3AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9D3EC401D09EC750028E3AA /* BondOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BondOSXTests.xctest;
+			remoteRef = D9D3EC3F1D09EC750028E3AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9D3EC421D09EC750028E3AA /* iOSAppForTesting.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = iOSAppForTesting.app;
+			remoteRef = D9D3EC411D09EC750028E3AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9D3EC441D09EC750028E3AA /* Bond.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bond.framework;
+			remoteRef = D9D3EC431D09EC750028E3AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9D3EC461D09EC750028E3AA /* tvOSAppForTesting.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = tvOSAppForTesting.app;
+			remoteRef = D9D3EC451D09EC750028E3AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D91A45FA1D05E4CE0043D588 /* Resources */ = {
@@ -300,6 +448,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D917DE601D09ECBC001F56F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Bond;
+			targetProxy = D917DE5F1D09ECBC001F56F1 /* PBXContainerItemProxy */;
+		};
 		D91A46121D05E4CE0043D588 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D91A45FB1D05E4CE0043D588 /* SignInExample */;
