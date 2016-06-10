@@ -11,6 +11,8 @@
 		D917DE6A1D09ECEE001F56F1 /* Bond.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9D3EC3A1D09EC750028E3AA /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D917DE6C1D09EDDE001F56F1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D917DE6B1D09EDDE001F56F1 /* HomeViewModel.swift */; };
 		D917DE6E1D09F337001F56F1 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D917DE6D1D09F337001F56F1 /* SignInViewModel.swift */; };
+		D917DE891D0B4A01001F56F1 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D917DE7A1D0B49D4001F56F1 /* ReSwift.framework */; };
+		D917DE8A1D0B4A0F001F56F1 /* ReSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D917DE7A1D0B49D4001F56F1 /* ReSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D91A46001D05E4CE0043D588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A45FF1D05E4CE0043D588 /* AppDelegate.swift */; };
 		D91A46051D05E4CE0043D588 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D91A46031D05E4CE0043D588 /* Main.storyboard */; };
 		D91A46071D05E4CE0043D588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D91A46061D05E4CE0043D588 /* Assets.xcassets */; };
@@ -32,6 +34,62 @@
 			proxyType = 1;
 			remoteGlobalIDString = 69491BAD1A7C217100A13B6B;
 			remoteInfo = Bond;
+		};
+		D917DE791D0B49D4001F56F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 625E66831C1FF97E0027C288;
+			remoteInfo = "ReSwift-iOS";
+		};
+		D917DE7B1D0B49D4001F56F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 625E669A1C1FFA3C0027C288;
+			remoteInfo = "ReSwift-iOSTests";
+		};
+		D917DE7D1D0B49D4001F56F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25DBCF7B1C30C4AA00D63A58;
+			remoteInfo = "ReSwift-OSX";
+		};
+		D917DE7F1D0B49D4001F56F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25DBCF871C30C4DB00D63A58;
+			remoteInfo = "ReSwift-OSXTests";
+		};
+		D917DE811D0B49D4001F56F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25DBCF4E1C30C18D00D63A58;
+			remoteInfo = "ReSwift-tvOS";
+		};
+		D917DE831D0B49D4001F56F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25DBCF641C30C1AC00D63A58;
+			remoteInfo = "ReSwift-tvOSTests";
+		};
+		D917DE851D0B49D4001F56F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25DBCF371C30BF2B00D63A58;
+			remoteInfo = "ReSwift-watchOS";
+		};
+		D917DE871D0B49FC001F56F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 625E66821C1FF97E0027C288;
+			remoteInfo = "ReSwift-iOS";
 		};
 		D91A46111D05E4CE0043D588 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -105,6 +163,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D917DE8A1D0B4A0F001F56F1 /* ReSwift.framework in CopyFiles */,
 				D917DE6A1D09ECEE001F56F1 /* Bond.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +173,7 @@
 /* Begin PBXFileReference section */
 		D917DE6B1D09EDDE001F56F1 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D917DE6D1D09F337001F56F1 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReSwift.xcodeproj; path = ReSwift/ReSwift.xcodeproj; sourceTree = "<group>"; };
 		D91A45FC1D05E4CE0043D588 /* SignInExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91A45FF1D05E4CE0043D588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D91A46041D05E4CE0043D588 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D917DE891D0B4A01001F56F1 /* ReSwift.framework in Frameworks */,
 				D917DE681D09ECC3001F56F1 /* Bond.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,11 +222,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D917DE701D0B49D4001F56F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D917DE7A1D0B49D4001F56F1 /* ReSwift.framework */,
+				D917DE7C1D0B49D4001F56F1 /* ReSwift-iOSTests.xctest */,
+				D917DE7E1D0B49D4001F56F1 /* ReSwift.framework */,
+				D917DE801D0B49D4001F56F1 /* ReSwift-OSXTests.xctest */,
+				D917DE821D0B49D4001F56F1 /* ReSwift.framework */,
+				D917DE841D0B49D4001F56F1 /* ReSwift-tvOSTests.xctest */,
+				D917DE861D0B49D4001F56F1 /* ReSwift.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D91A45F31D05E4CE0043D588 = {
 			isa = PBXGroup;
 			children = (
 				D91A45FE1D05E4CE0043D588 /* SignInExample */,
 				D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */,
+				D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */,
 				D91A46131D05E4CE0043D588 /* SignInExampleTests */,
 				D91A461E1D05E4CE0043D588 /* SignInExampleUITests */,
 				D91A45FD1D05E4CE0043D588 /* Products */,
@@ -249,6 +325,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D917DE881D0B49FC001F56F1 /* PBXTargetDependency */,
 				D917DE601D09ECBC001F56F1 /* PBXTargetDependency */,
 			);
 			name = SignInExample;
@@ -331,6 +408,10 @@
 					ProductGroup = D9D3EC301D09EC740028E3AA /* Products */;
 					ProjectRef = D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */;
 				},
+				{
+					ProductGroup = D917DE701D0B49D4001F56F1 /* Products */;
+					ProjectRef = D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -342,6 +423,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		D917DE7A1D0B49D4001F56F1 /* ReSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReSwift.framework;
+			remoteRef = D917DE791D0B49D4001F56F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D917DE7C1D0B49D4001F56F1 /* ReSwift-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReSwift-iOSTests.xctest";
+			remoteRef = D917DE7B1D0B49D4001F56F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D917DE7E1D0B49D4001F56F1 /* ReSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReSwift.framework;
+			remoteRef = D917DE7D1D0B49D4001F56F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D917DE801D0B49D4001F56F1 /* ReSwift-OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReSwift-OSXTests.xctest";
+			remoteRef = D917DE7F1D0B49D4001F56F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D917DE821D0B49D4001F56F1 /* ReSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReSwift.framework;
+			remoteRef = D917DE811D0B49D4001F56F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D917DE841D0B49D4001F56F1 /* ReSwift-tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReSwift-tvOSTests.xctest";
+			remoteRef = D917DE831D0B49D4001F56F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D917DE861D0B49D4001F56F1 /* ReSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReSwift.framework;
+			remoteRef = D917DE851D0B49D4001F56F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D9D3EC3A1D09EC750028E3AA /* Bond.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -460,6 +590,11 @@
 			isa = PBXTargetDependency;
 			name = Bond;
 			targetProxy = D917DE5F1D09ECBC001F56F1 /* PBXContainerItemProxy */;
+		};
+		D917DE881D0B49FC001F56F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReSwift-iOS";
+			targetProxy = D917DE871D0B49FC001F56F1 /* PBXContainerItemProxy */;
 		};
 		D91A46121D05E4CE0043D588 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

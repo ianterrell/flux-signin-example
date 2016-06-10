@@ -1,3 +1,6 @@
 [submodule "Bond"]
 	path = Bond
 	url = git@github.com:SwiftBond/Bond.git
+[submodule "ReSwift"]
+	path = ReSwift
+	url = git@github.com:ReSwift/ReSwift.git
