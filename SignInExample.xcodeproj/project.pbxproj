@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		D917DE681D09ECC3001F56F1 /* Bond.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D3EC3A1D09EC750028E3AA /* Bond.framework */; };
 		D917DE6A1D09ECEE001F56F1 /* Bond.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9D3EC3A1D09EC750028E3AA /* Bond.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D917DE6C1D09EDDE001F56F1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D917DE6B1D09EDDE001F56F1 /* HomeViewModel.swift */; };
 		D917DE6E1D09F337001F56F1 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D917DE6D1D09F337001F56F1 /* SignInViewModel.swift */; };
 		D917DE891D0B4A01001F56F1 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D917DE7A1D0B49D4001F56F1 /* ReSwift.framework */; };
 		D917DE8A1D0B4A0F001F56F1 /* ReSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D917DE7A1D0B49D4001F56F1 /* ReSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D917DE8C1D0B512E001F56F1 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = D917DE8B1D0B512E001F56F1 /* State.swift */; };
 		D91A46001D05E4CE0043D588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A45FF1D05E4CE0043D588 /* AppDelegate.swift */; };
 		D91A46051D05E4CE0043D588 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D91A46031D05E4CE0043D588 /* Main.storyboard */; };
 		D91A46071D05E4CE0043D588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D91A46061D05E4CE0043D588 /* Assets.xcassets */; };
@@ -171,9 +171,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D917DE6B1D09EDDE001F56F1 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D917DE6D1D09F337001F56F1 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		D917DE6F1D0B49D4001F56F1 /* ReSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReSwift.xcodeproj; path = ReSwift/ReSwift.xcodeproj; sourceTree = "<group>"; };
+		D917DE8B1D0B512E001F56F1 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		D91A45FC1D05E4CE0043D588 /* SignInExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91A45FF1D05E4CE0043D588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D91A46041D05E4CE0043D588 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -263,9 +263,9 @@
 			children = (
 				D91A45FF1D05E4CE0043D588 /* AppDelegate.swift */,
 				D91A462F1D05E9840043D588 /* HomeViewController.swift */,
-				D917DE6B1D09EDDE001F56F1 /* HomeViewModel.swift */,
 				D91A462D1D05E9600043D588 /* SignInViewController.swift */,
 				D917DE6D1D09F337001F56F1 /* SignInViewModel.swift */,
+				D917DE8B1D0B512E001F56F1 /* State.swift */,
 				D920AE3E1D05FE1C002CD8FE /* API.swift */,
 				D920AE401D060E3C002CD8FE /* MockAPI.swift */,
 				D920AE421D0614FF002CD8FE /* Extensions.swift */,
@@ -557,12 +557,12 @@
 			files = (
 				D91A462E1D05E9600043D588 /* SignInViewController.swift in Sources */,
 				D920AE431D0614FF002CD8FE /* Extensions.swift in Sources */,
-				D917DE6C1D09EDDE001F56F1 /* HomeViewModel.swift in Sources */,
 				D91A46001D05E4CE0043D588 /* AppDelegate.swift in Sources */,
 				D920AE3F1D05FE1C002CD8FE /* API.swift in Sources */,
 				D917DE6E1D09F337001F56F1 /* SignInViewModel.swift in Sources */,
 				D920AE411D060E3D002CD8FE /* MockAPI.swift in Sources */,
 				D91A46301D05E9840043D588 /* HomeViewController.swift in Sources */,
+				D917DE8C1D0B512E001F56F1 /* State.swift in Sources */,
 				D9D3EC2E1D074F320028E3AA /* Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

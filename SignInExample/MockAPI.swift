@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReSwift
 
 struct MockAPI: SignInService {
     static let users = [
@@ -47,12 +48,14 @@ struct MockAPI: SignInService {
                 return
             }
 
-            User.postNotification(.signedIn, object: Box(contents: user.data))
+            dispatch_async(dispatch_get_main_queue()) {
+                mainStore.dispatch(AuthenticationAction.signIn(user.data))
+            }
             completion(.success(user.data))
         }
     }
 
     func signOut() {
-        User.postNotification(.signedOut)
+        mainStore.dispatch(AuthenticationAction.signOut)
     }
 }

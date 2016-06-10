@@ -7,25 +7,32 @@
 //
 
 import UIKit
-import Bond
+import ReSwift
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, StoreSubscriber {
     @IBOutlet var signInButton: UIBarButtonItem!
     @IBOutlet var signOutButton: UIBarButtonItem!
 
     @IBOutlet var helloLabel: UILabel!
 
     var api: SignInService!
-    var viewModel: HomeViewModel!
 
     func inject(api api: SignInService) {
         self.api = api
-        viewModel = HomeViewModel(api: api)
     }
 
-    override func viewDidLoad() {
-        viewModel.greeting.bindTo(helloLabel.bnd_text)
-        viewModel.user.map{$0 != nil}.observe { [unowned self] in self.updateAuthenticationStatus($0) }
+    override func viewWillAppear(animated: Bool) {
+        mainStore.subscribe(self)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        mainStore.unsubscribe(self)
+    }
+
+    func newState(state: AppState) {
+        let state = state.homeScreen
+        helloLabel.text = state.greeting
+        updateAuthenticationStatus(state.signedIn)
     }
 
     func updateAuthenticationStatus(signedIn: Bool) {
@@ -39,6 +46,6 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func signOut(sender: AnyObject) {
-        viewModel.signOut()
+        api.signOut()
     }
 }
