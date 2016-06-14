@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ReSwift
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, StoreSubscriber {
     @IBOutlet var serverErrorView: UIView!
     @IBOutlet var serverErrorLabel: UILabel!
 
@@ -21,26 +22,40 @@ class SignInViewController: UIViewController {
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
-    var viewModel: SignInViewModel!
+    var api: SignInService!
 
     func inject(api api: SignInService) {
-        viewModel = SignInViewModel(api: api)
+        self.api = api
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        mainStore.subscribe(self)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        mainStore.unsubscribe(self)
     }
 
     override func viewDidLoad() {
-        viewModel.serverError.bindTo(serverErrorLabel.bnd_text)
-        viewModel.serverError.map{ $0 == nil }.bindTo(serverErrorView.bnd_hidden)
+        emailField.addTarget(self, action: .emailUpdated, forControlEvents: .EditingChanged)
+        passwordField.addTarget(self, action: .passwordUpdated, forControlEvents: .EditingChanged)
+    }
 
-        viewModel.email.bidirectionalBindTo(emailField.bnd_text)
-        viewModel.isEmailValid.bindTo(emailErrorLabel.bnd_hidden)
+    func newState(state: AppState) {
+        let state = state.signInScreen
 
-        viewModel.password.bidirectionalBindTo(passwordField.bnd_text)
-        viewModel.isPasswordValid.bindTo(passwordErrorLabel.bnd_hidden)
+        serverErrorLabel.text = state.serverError
+        serverErrorView.hidden = (state.serverError == nil)
 
-        viewModel.isFormValid.bindTo(signInButton.bnd_enabled)
+        emailField.text = state.email
+        emailErrorLabel.hidden = state.isEmailValid
 
-        viewModel.isSigningIn.bindTo(signInButton.bnd_hidden)
-        viewModel.isSigningIn.map{ !$0 }.bindTo(activityIndicator.bnd_hidden)
+        passwordField.text = state.password
+        passwordErrorLabel.hidden = state.isPasswordValid
+
+        signInButton.enabled = state.isFormValid
+        signInButton.hidden = state.isSigningIn
+        activityIndicator.hidden = !state.isSigningIn
     }
 
     @IBAction func dismiss() {
@@ -51,11 +66,36 @@ class SignInViewController: UIViewController {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
 
-        viewModel.signIn { [weak self] success in
-            if success {
-                self?.dismiss()
+        mainStore.dispatch(SignInFormAction.signInRequest)
+        api.signIn(email: emailField.text ?? "", password: passwordField.text ?? "") { [weak self] result in
+            guard let sself = self else {
+                return
+            }
+
+            dispatch_async(dispatch_get_main_queue()) {
+                switch result {
+                case .success(let user):
+                    mainStore.dispatch(SignInFormAction.signInSuccess)
+                    mainStore.dispatch(AuthenticationAction.signIn(user))
+                    sself.dismiss()
+                    break
+                case .error(let error):
+                    mainStore.dispatch(SignInFormAction.signInError(error))
+                }
             }
         }
+    }
+}
+
+// MARK: - Editing Events
+
+extension SignInViewController {
+    func emailUpdated() {
+        mainStore.dispatch(SignInFormAction.emailUpdated(emailField.text ?? ""))
+    }
+
+    func passwordUpdated() {
+        mainStore.dispatch(SignInFormAction.passwordUpdated(passwordField.text ?? ""))
     }
 }
 
@@ -79,11 +119,17 @@ extension SignInViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         switch textField {
         case emailField:
-            viewModel.emailEditedOnce.value = true
+            mainStore.dispatch(SignInFormAction.emailEdited)
         case passwordField:
-            viewModel.passwordEditedOnce.value = true
+            mainStore.dispatch(SignInFormAction.passwordEdited)
         default:
             break
         }
     }
+}
+
+
+extension Selector {
+    static let emailUpdated = #selector(SignInViewController.emailUpdated)
+    static let passwordUpdated = #selector(SignInViewController.passwordUpdated)
 }
