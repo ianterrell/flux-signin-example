@@ -23,6 +23,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     var api: SignInService!
+    var state: SignInState!
 
     func inject(api api: SignInService) {
         self.api = api
@@ -42,8 +43,8 @@ class SignInViewController: UIViewController, StoreSubscriber {
         passwordField.addTarget(self, action: .passwordUpdated, forControlEvents: .EditingChanged)
     }
 
-    func newState(state: AppState) {
-        let state = state.signInForm
+    func newState(appState: AppState) {
+        state = appState.signInForm
         let viewState = ViewState(state: state)
 
         serverErrorLabel.text = state.serverError
@@ -57,7 +58,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
         passwordField.enabled = !state.isSigningIn
         passwordErrorLabel.hidden = viewState.hidePasswordError
 
-        signInButton.enabled = viewState.enableSignInButton
+        signInButton.enabled = state.isFormValid
         signInButton.hidden = state.isSigningIn
         activityIndicator.hidden = !state.isSigningIn
     }
@@ -67,9 +68,9 @@ class SignInViewController: UIViewController, StoreSubscriber {
     }
 
     @IBAction func signIn() {
-        guard signInButton.enabled,
-              let email = emailField.text,
-              let password = passwordField.text
+        guard state.isFormValid,
+              let email = state.email,
+              let password = state.password
         else {
             return
         }
@@ -105,13 +106,11 @@ extension SignInViewController {
         let hideServerError: Bool
         let hideEmailError: Bool
         let hidePasswordError: Bool
-        let enableSignInButton: Bool
 
         init(state: SignInState) {
             hideServerError = state.serverError == nil
             hideEmailError = !state.emailEditedOnce || state.isEmailValid
             hidePasswordError = !state.passwordEditedOnce || state.isPasswordValid
-            enableSignInButton = state.isFormValid
         }
     }
 }
