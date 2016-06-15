@@ -16,11 +16,11 @@ class HomeViewController: UIViewController {
     @IBOutlet var helloLabel: UILabel!
 
     var api: SignInService!
-    var viewModel: HomeViewModel!
+    var viewModel: ViewModel!
 
     func inject(api api: SignInService) {
         self.api = api
-        viewModel = HomeViewModel(api: api)
+        viewModel = ViewModel(api: api)
     }
 
     override func viewDidLoad() {

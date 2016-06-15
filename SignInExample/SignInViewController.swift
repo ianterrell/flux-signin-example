@@ -21,10 +21,10 @@ class SignInViewController: UIViewController {
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
-    var viewModel: SignInViewModel!
+    var viewModel: ViewModel!
 
     func inject(api api: SignInService) {
-        viewModel = SignInViewModel(api: api)
+        viewModel = ViewModel(api: api)
     }
 
     override func viewDidLoad() {
@@ -32,10 +32,10 @@ class SignInViewController: UIViewController {
         viewModel.serverError.map{ $0 == nil }.bindTo(serverErrorView.bnd_hidden)
 
         viewModel.email.bidirectionalBindTo(emailField.bnd_text)
-        viewModel.isEmailValid.bindTo(emailErrorLabel.bnd_hidden)
+        viewModel.hideEmailError.bindTo(emailErrorLabel.bnd_hidden)
 
         viewModel.password.bidirectionalBindTo(passwordField.bnd_text)
-        viewModel.isPasswordValid.bindTo(passwordErrorLabel.bnd_hidden)
+        viewModel.hidePasswordError.bindTo(passwordErrorLabel.bnd_hidden)
 
         viewModel.isFormValid.bindTo(signInButton.bnd_enabled)
 
@@ -48,6 +48,10 @@ class SignInViewController: UIViewController {
     }
 
     @IBAction func signIn() {
+        guard viewModel.isFormValid.value else {
+            return
+        }
+
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
 
@@ -67,7 +71,6 @@ extension SignInViewController: UITextFieldDelegate {
         case emailField:
             passwordField.becomeFirstResponder()
         case passwordField:
-            passwordField.resignFirstResponder()
             signIn()
         default:
             break

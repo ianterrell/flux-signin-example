@@ -9,54 +9,54 @@
 import Foundation
 import Bond
 
-final class HomeViewModel: NSObject {
-    static let defaultGreeting = "Hello!"
+extension HomeViewController {
+    final class ViewModel: NSObject {
+        static let defaultGreeting = "Hello!"
 
-    let api: SignInService!
+        let api: SignInService!
 
-    let user = EventProducer<User?>()
-    let greeting = Observable<String>(HomeViewModel.defaultGreeting)
+        let user = Observable<User?>(nil)
+        let greeting = Observable(ViewModel.defaultGreeting)
 
-    init(api: SignInService) {
-        self.api = api
-        user.map { HomeViewModel.greeting($0) }.bindTo(greeting)
+        init(api: SignInService) {
+            self.api = api
+            user.map { ViewModel.greeting($0) }.bindTo(greeting)
 
-        super.init()
+            super.init()
 
-        User.addObserver(self, selector: .signedIn, notification: .signedIn)
-        User.addObserver(self, selector: .signedOut, notification: .signedOut)
-    }
-
-    static func greeting(user: User?) -> String {
-        guard let user = user else {
-            return "Hello!"
+            User.addObserver(self, selector: .signedIn, notification: .signedIn)
+            User.addObserver(self, selector: .signedOut, notification: .signedOut)
         }
-        return "Hello, \(user.name)!"
-    }
 
-    deinit {
-        User.notificationCenter.removeObserver(self)
-    }
+        static func greeting(user: User?) -> String {
+            guard let user = user else {
+                return "Hello!"
+            }
+            return "Hello, \(user.name)!"
+        }
 
-    func signOut() {
-        api.signOut()
+        deinit {
+            User.notificationCenter.removeObserver(self)
+        }
+
+        func signOut() {
+            api.signOut()
+        }
+
+        func signedIn(notification: NSNotification) {
+            guard let box = notification.object as? Box<User> else {
+                preconditionFailure("Notification should only be sent with a Box<User>")
+            }
+            user.value = box.contents
+        }
+        
+        func signedOut() {
+            user.value = nil
+        }
     }
 }
 
-extension HomeViewModel {
-    func signedIn(notification: NSNotification) {
-        guard let box = notification.object as? Box<User> else {
-            preconditionFailure("Notification should only be sent with a Box<User>")
-        }
-        user.next(box.contents)
-    }
-
-    func signedOut() {
-        user.next(nil)
-    }
-}
-
-extension Selector {
-    static let signedIn = #selector(HomeViewModel.signedIn(_:))
-    static let signedOut = #selector(HomeViewModel.signedOut)
+private extension Selector {
+    static let signedIn = #selector(HomeViewController.ViewModel.signedIn(_:))
+    static let signedOut = #selector(HomeViewController.ViewModel.signedOut)
 }

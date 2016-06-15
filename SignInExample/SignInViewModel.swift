@@ -9,58 +9,68 @@
 import Foundation
 import Bond
 
-final class SignInViewModel: NSObject {
-    let api: SignInService!
+extension SignInViewController {
+    final class ViewModel: NSObject {
+        let api: SignInService!
 
-    let serverError = Observable<String?>(nil)
+        let serverError = Observable<String?>(nil)
 
-    let email = Observable<String?>(nil)
-    let emailEditedOnce = Observable(false)
+        let email = Observable<String?>(nil)
+        let emailEditedOnce = Observable(false)
 
-    let password = Observable<String?>(nil)
-    let passwordEditedOnce = Observable(false)
+        let password = Observable<String?>(nil)
+        let passwordEditedOnce = Observable(false)
 
-    let isEmailValid: EventProducer<Bool>
-    let isPasswordValid: EventProducer<Bool>
-    let isFormValid: EventProducer<Bool>
+        let isEmailValid: EventProducer<Bool>
+        let isPasswordValid: EventProducer<Bool>
+        let isFormValid = Observable<Bool>(false)
 
-    let isSigningIn = EventProducer<Bool>()
+        let hideEmailError: EventProducer<Bool>
+        let hidePasswordError: EventProducer<Bool>
 
-    init(api: SignInService) {
-        self.api = api
+        let isSigningIn = EventProducer<Bool>()
 
-        isEmailValid = combineLatest(emailEditedOnce, email).map { !$0 || Validation.isValidEmail($1 ?? "") }
-        isPasswordValid = combineLatest(passwordEditedOnce, password).map { !$0 || Validation.isValidPassword($1 ?? "") }
-        isFormValid = combineLatest(isEmailValid, isPasswordValid).map { $0 && $1 }
+        init(api: SignInService) {
+            self.api = api
 
-        super.init()
-    }
+            isEmailValid = email.map { Validation.isValidEmail($0 ?? "") }
+            hideEmailError = combineLatest(emailEditedOnce, isEmailValid).map { !$0 || $1 }
 
-    func signIn(completion: (success: Bool)->()) {
-        guard let email = email.value, let password = password.value else {
-            return
+            isPasswordValid = password.map { Validation.isValidPassword($0 ?? "") }
+            hidePasswordError = combineLatest(passwordEditedOnce, isPasswordValid).map { !$0 || $1 }
+
+            combineLatest(isEmailValid, isPasswordValid).map { $0 && $1 }.bindTo(isFormValid)
+
+            super.init()
         }
 
-        serverError.value = nil
-        isSigningIn.next(true)
-
-        api.signIn(email: email, password: password) { [weak self] result in
-            guard let sself = self else {
+        func signIn(completion: (success: Bool)->()) {
+            guard let email = email.value, let password = password.value else {
                 return
             }
 
-            dispatch_async(dispatch_get_main_queue()) {
-                sself.isSigningIn.next(false)
+            serverError.value = nil
+            isSigningIn.next(true)
 
-                switch result {
-                case .success(_):
-                    completion(success: true)
-                    break
-                case .error(let e):
-                    sself.serverError.value = e.message
-                    completion(success: false)
+            api.signIn(email: email, password: password) { [weak self] result in
+                guard let sself = self else {
+                    return
+                }
+
+                dispatch_async(dispatch_get_main_queue()) {
+                    sself.isSigningIn.next(false)
+
+                    switch result {
+                    case .success(_):
+                        completion(success: true)
+                        break
+                    case .error(let e):
+                        sself.serverError.value = e.message
+                        completion(success: false)
+                    }
                 }
             }
         }
+
     }
 }
