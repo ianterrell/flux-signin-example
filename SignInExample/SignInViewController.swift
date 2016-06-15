@@ -33,6 +33,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
     }
 
     override func viewWillDisappear(animated: Bool) {
+        mainStore.dispatch(SignInFormAction.reset)
         mainStore.unsubscribe(self)
     }
 
@@ -42,18 +43,21 @@ class SignInViewController: UIViewController, StoreSubscriber {
     }
 
     func newState(state: AppState) {
-        let state = state.signInScreen
+        let state = state.signInForm
+        let viewState = ViewState(state: state)
 
         serverErrorLabel.text = state.serverError
-        serverErrorView.hidden = (state.serverError == nil)
+        serverErrorView.hidden = viewState.hideServerError
 
         emailField.text = state.email
-        emailErrorLabel.hidden = state.isEmailValid
+        emailField.enabled = !state.isSigningIn
+        emailErrorLabel.hidden = viewState.hideEmailError
 
         passwordField.text = state.password
-        passwordErrorLabel.hidden = state.isPasswordValid
+        passwordField.enabled = !state.isSigningIn
+        passwordErrorLabel.hidden = viewState.hidePasswordError
 
-        signInButton.enabled = state.isFormValid
+        signInButton.enabled = viewState.enableSignInButton
         signInButton.hidden = state.isSigningIn
         activityIndicator.hidden = !state.isSigningIn
     }
@@ -63,11 +67,18 @@ class SignInViewController: UIViewController, StoreSubscriber {
     }
 
     @IBAction func signIn() {
+        guard signInButton.enabled,
+              let email = emailField.text,
+              let password = passwordField.text
+        else {
+            return
+        }
+
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
 
-        mainStore.dispatch(SignInFormAction.signInRequest)
-        api.signIn(email: emailField.text ?? "", password: passwordField.text ?? "") { [weak self] result in
+        mainStore.dispatch(SignInFormAction.requested)
+        api.signIn(email: email, password: password) { [weak self] result in
             guard let sself = self else {
                 return
             }
@@ -75,14 +86,32 @@ class SignInViewController: UIViewController, StoreSubscriber {
             dispatch_async(dispatch_get_main_queue()) {
                 switch result {
                 case .success(let user):
-                    mainStore.dispatch(SignInFormAction.signInSuccess)
+                    mainStore.dispatch(SignInFormAction.success)
                     mainStore.dispatch(AuthenticationAction.signIn(user))
                     sself.dismiss()
                     break
                 case .error(let error):
-                    mainStore.dispatch(SignInFormAction.signInError(error))
+                    mainStore.dispatch(SignInFormAction.error(error))
                 }
             }
+        }
+    }
+}
+
+// MARK: - View State
+
+extension SignInViewController {
+    struct ViewState {
+        let hideServerError: Bool
+        let hideEmailError: Bool
+        let hidePasswordError: Bool
+        let enableSignInButton: Bool
+
+        init(state: SignInState) {
+            hideServerError = state.serverError == nil
+            hideEmailError = !state.emailEditedOnce || state.isEmailValid
+            hidePasswordError = !state.passwordEditedOnce || state.isPasswordValid
+            enableSignInButton = state.isFormValid
         }
     }
 }
@@ -107,7 +136,6 @@ extension SignInViewController: UITextFieldDelegate {
         case emailField:
             passwordField.becomeFirstResponder()
         case passwordField:
-            passwordField.resignFirstResponder()
             signIn()
         default:
             break
@@ -128,8 +156,7 @@ extension SignInViewController: UITextFieldDelegate {
     }
 }
 
-
-extension Selector {
+private extension Selector {
     static let emailUpdated = #selector(SignInViewController.emailUpdated)
     static let passwordUpdated = #selector(SignInViewController.passwordUpdated)
 }

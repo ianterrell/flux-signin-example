@@ -30,9 +30,9 @@ class HomeViewController: UIViewController, StoreSubscriber {
     }
 
     func newState(state: AppState) {
-        let state = state.homeScreen
-        helloLabel.text = state.greeting
-        updateAuthenticationStatus(state.signedIn)
+        let viewState = ViewState(user: state.user)
+        helloLabel.text = viewState.greeting
+        updateAuthenticationStatus(viewState.signedIn)
     }
 
     func updateAuthenticationStatus(signedIn: Bool) {
@@ -47,5 +47,21 @@ class HomeViewController: UIViewController, StoreSubscriber {
 
     @IBAction func signOut(sender: AnyObject) {
         api.signOut()
+    }
+}
+
+extension HomeViewController {
+    struct ViewState {
+        let signedIn: Bool
+        let greeting: String
+
+        init(user: User?) {
+            signedIn = user != nil
+            if let user = user {
+                greeting = "Hello, \(user.name)!"
+            } else {
+                greeting = "Hello!"
+            }
+        }
     }
 }
