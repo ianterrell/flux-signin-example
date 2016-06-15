@@ -31,13 +31,16 @@ class SignInViewController: UIViewController {
     }
 
     @IBAction func signIn() {
-        emailField.resignFirstResponder()
-        passwordField.resignFirstResponder()
-
         let (_, _, formIsValid) = isValid()
-        guard formIsValid, let email = emailField.text, let password = passwordField.text else {
+        guard formIsValid,
+              let email = emailField.text,
+              let password = passwordField.text
+        else {
             return
         }
+
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
 
         signInButton.hidden = true
         activityIndicator.hidden = false
@@ -62,7 +65,6 @@ class SignInViewController: UIViewController {
         }
     }
 }
-
 
 // MARK: - Lifecycle Methods
 
@@ -103,7 +105,6 @@ extension SignInViewController: UITextFieldDelegate {
         case emailField:
             passwordField.becomeFirstResponder()
         case passwordField:
-            passwordField.resignFirstResponder()
             signIn()
         default:
             break
@@ -126,6 +127,6 @@ extension SignInViewController: UITextFieldDelegate {
     }
 }
 
-extension Selector {
+private extension Selector {
     static let validate = #selector(SignInViewController.validate)
 }

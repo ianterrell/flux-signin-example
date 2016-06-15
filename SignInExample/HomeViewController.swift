@@ -55,7 +55,6 @@ class HomeViewController: UIViewController {
     }
 }
 
-
 extension HomeViewController {
     func signedIn(notification: NSNotification) {
         guard let box = notification.object as? Box<User> else {
@@ -71,7 +70,7 @@ extension HomeViewController {
     }
 }
 
-extension Selector {
+private extension Selector {
     static let signedIn = #selector(HomeViewController.signedIn(_:))
     static let signedOut = #selector(HomeViewController.signedOut)
 }
