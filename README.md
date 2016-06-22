@@ -7,7 +7,7 @@ Run `pod install`. This will install Nimble-Snapshots and all of its dependencie
 
 ### Testing
 To start, an environment variable will need to be added in order for the tests to find reference images.
-Add name `FB_REFERENCE_IMAGE_DIR` with value `$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages` or where ever reference images should be stored.
+Add name `FB_REFERENCE_IMAGE_DIR` with value `$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages` or where reference images should be stored.
 
 Within a test file, make sure to import the following
 
