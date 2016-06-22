@@ -29,6 +29,8 @@
 		D9D3EC2E1D074F320028E3AA /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3EC2D1D074F320028E3AA /* Validation.swift */; };
 		D9FB7EB21D11DD850082E414 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7EB11D11DD850082E414 /* Reducers.swift */; };
 		D9FB7EC01D11DDA60082E414 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7EBF1D11DDA60082E414 /* Actions.swift */; };
+		DD1A73DC1D1AD06300BE4FB1 /* SignInNimbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A73DB1D1AD06300BE4FB1 /* SignInNimbleTests.swift */; };
+		DD1A73EA1D1AD0F100BE4FB1 /* HomeNimbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A73E91D1AD0F100BE4FB1 /* HomeNimbleTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +209,8 @@
 		D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bond.xcodeproj; path = Bond/Bond.xcodeproj; sourceTree = "<group>"; };
 		D9FB7EB11D11DD850082E414 /* Reducers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducers.swift; sourceTree = "<group>"; };
 		D9FB7EBF1D11DDA60082E414 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		DD1A73DB1D1AD06300BE4FB1 /* SignInNimbleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInNimbleTests.swift; sourceTree = "<group>"; };
+		DD1A73E91D1AD0F100BE4FB1 /* HomeNimbleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNimbleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +307,8 @@
 			children = (
 				D91A46141D05E4CE0043D588 /* SignInExampleTests.swift */,
 				D91A46161D05E4CE0043D588 /* Info.plist */,
+				DD1A73DB1D1AD06300BE4FB1 /* SignInNimbleTests.swift */,
+				DD1A73E91D1AD0F100BE4FB1 /* HomeNimbleTests.swift */,
 			);
 			path = SignInExampleTests;
 			sourceTree = "<group>";
@@ -746,7 +752,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1A73DC1D1AD06300BE4FB1 /* SignInNimbleTests.swift in Sources */,
 				D91A46151D05E4CE0043D588 /* SignInExampleTests.swift in Sources */,
+				DD1A73EA1D1AD0F100BE4FB1 /* HomeNimbleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
