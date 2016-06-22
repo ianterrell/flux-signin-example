@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3B30A2E450353941AE4B1912B7F2DCA28236DA4A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D78924967B5ECB0A1D20E197FAB93ACBFA47F0D1" : 0,
+    "3B30A2E450353941AE4B1912B7F2DCA28236DA4A" : 0,
+    "67108B0A168D697C36BDA3AD867F29B9F1E14EF2" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5B9E550A-718F-4D56-A1C1-DC532C465B43",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D78924967B5ECB0A1D20E197FAB93ACBFA47F0D1" : "flux-signin-example\/Bond\/",
+    "3B30A2E450353941AE4B1912B7F2DCA28236DA4A" : "flux-signin-example\/",
+    "67108B0A168D697C36BDA3AD867F29B9F1E14EF2" : "flux-signin-example\/ReSwift\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SignInExample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SignInExample.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:philsawyer16\/flux-signin-example.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B30A2E450353941AE4B1912B7F2DCA28236DA4A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ReSwift\/ReSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67108B0A168D697C36BDA3AD867F29B9F1E14EF2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:SwiftBond\/Bond.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D78924967B5ECB0A1D20E197FAB93ACBFA47F0D1"
+    }
+  ]
+}
