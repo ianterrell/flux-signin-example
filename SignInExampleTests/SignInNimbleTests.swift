@@ -35,7 +35,7 @@ class SignInNimbleTests: QuickSpec {
                 mainStore.dispatch(SignInFormAction.emailEdited)
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to( recordSnapshot())
+                expect(window).to( haveValidSnapshot())
                 
                 mainStore.dispatch(SignInFormAction.emailUpdated(""))
             }
@@ -49,7 +49,7 @@ class SignInNimbleTests: QuickSpec {
                 mainStore.dispatch(SignInFormAction.emailEdited)
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to( recordSnapshot())
+                expect(window).to( haveValidSnapshot())
                 
                 mainStore.dispatch(SignInFormAction.emailUpdated(""))
             }
@@ -62,7 +62,7 @@ class SignInNimbleTests: QuickSpec {
                 mainStore.dispatch(SignInFormAction.passwordEdited)
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to( recordSnapshot())
+                expect(window).to( haveValidSnapshot())
             }
         });
         
@@ -73,7 +73,7 @@ class SignInNimbleTests: QuickSpec {
                 mainStore.dispatch(SignInFormAction.passwordEdited)
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to( recordSnapshot())
+                expect(window).to( haveValidSnapshot())
             }
         });
         
@@ -87,7 +87,7 @@ class SignInNimbleTests: QuickSpec {
                 mainStore.dispatch(SignInFormAction.passwordEdited)
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to( recordSnapshot())
+                expect(window).to( haveValidSnapshot())
             }
         });
         
@@ -101,7 +101,7 @@ class SignInNimbleTests: QuickSpec {
                 mainStore.dispatch(SignInFormAction.passwordEdited)
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to( recordSnapshot())
+                expect(window).to( haveValidSnapshot())
             }
         });
         
@@ -118,7 +118,7 @@ class SignInNimbleTests: QuickSpec {
                 mainStore.dispatch(SignInFormAction.error(error))
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to( recordSnapshot())
+                expect(window).to( haveValidSnapshot())
             }
         });
         
@@ -135,7 +135,7 @@ class SignInNimbleTests: QuickSpec {
                 mainStore.dispatch(SignInFormAction.error(error))
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to( recordSnapshot())
+                expect(window).to( haveValidSnapshot())
             }
         });
         
@@ -152,7 +152,7 @@ class SignInNimbleTests: QuickSpec {
                 mainStore.dispatch(SignInFormAction.error(error))
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to( recordSnapshot())
+                expect(window).to( haveValidSnapshot())
             }
         });
     }

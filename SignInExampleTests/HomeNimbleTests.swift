@@ -33,7 +33,7 @@ class HomePageNimbleTests: QuickSpec {
         describe("HomeViewController", { () -> () in
             it("has no user") {
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to(recordSnapshot())
+                expect(window).to(haveValidSnapshot())
             }
         });
         
@@ -45,7 +45,7 @@ class HomePageNimbleTests: QuickSpec {
                 mainStore.dispatch(AuthenticationAction.signIn(user))
                 
                 let window = UIApplication.sharedApplication().keyWindow
-                expect(window).to(recordSnapshot())
+                expect(window).to(haveValidSnapshot())
             }
         });
     }
