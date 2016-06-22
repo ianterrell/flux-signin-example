@@ -36,3 +36,7 @@ The `haveValidSnapshot()` method grabs the reference image specific to the test 
 Before running tests with `haveValidSnapshot()`, there needs to be reference images to compare against. Replace all instances of `haveValidSnapshot()` with `recordSnapshot()` and run once. This will create images from the views and put them in the directory specified in the `FB_REFERENCE_IMAGE_DIR` variable. Replace `recordSnapshot()` with `haveValidSnapshot()` and testing can begin.
 
 The tests will continue to pass when the view matches the reference image. However, when they do not match - the test case fails. The console log will contain a terminal command to launch Kaleidoscope (a file comparison tool) to view the reference next to the failed view. If Kaleidoscope is not installed, the name of the failed view with a path to its location can be found in the command.
+
+
+### Issues
+If the target device is changed, reference images need to be deleted and re-recorded. The tests will fail when the device is changed and old reference images are being used. 
