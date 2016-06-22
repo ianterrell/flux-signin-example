@@ -39,4 +39,8 @@ The tests will continue to pass when the view matches the reference image. Howev
 
 
 ### Issues
-If the target device is changed, reference images need to be deleted and re-recorded. The tests will fail when the device is changed and old reference images are being used. 
+If the target device is changed, reference images need to be deleted and re-recorded. The tests will fail when the device is changed and old reference images are being used.
+
+### More Info
+Nimble-Snapshots is built on top of FBSnapshotTestCase. Refer to `https://github.com/facebook/ios-snapshot-test-case` for more info.
+Nimble-Snapshots is also built on top of Nimble. Refer to `https://github.com/Quick/Nimble` for more info about syntax testing possibilities. 
