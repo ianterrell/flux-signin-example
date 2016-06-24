@@ -1,6 +1,6 @@
 //
 //  State.swift
-//  SignInExample
+//  SignInExamplev
 //
 //  Created by Ian Terrell on 6/10/16.
 //  Copyright © 2016 WillowTree. All rights reserved.
