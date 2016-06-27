@@ -32,6 +32,7 @@ class SignInNimbleTests: QuickSpec {
                 
                 
                 mainStore.dispatch(SignInFormAction.emailUpdated("mark@facebook"))
+                //mainStore.dispatch(SignInFormAction.emailUpdated("mark@asdf"))
                 mainStore.dispatch(SignInFormAction.emailEdited)
                 
                 let window = UIApplication.sharedApplication().keyWindow
