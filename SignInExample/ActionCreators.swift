@@ -18,9 +18,10 @@ final class AuthenticationActionCreator {
         self.store = store
     }
 
-    func signIn(email email: String, password: String, completion: ((success: Bool)->())? = nil) -> Cancelable {
+    func signIn(email email: String, password: String) -> CancelableFuture<User,ServiceError> {
         store.dispatch(SignInFormAction.requested)
-        return api.signIn(email: email, password: password) { [weak self] result in
+        let future = CancelableFuture<User,ServiceError>()
+        let cancelToken = api.signIn(email: email, password: password) { [weak self] result in
             guard let store = self?.store else {
                 return
             }
@@ -30,12 +31,17 @@ final class AuthenticationActionCreator {
                 case .success(let user):
                     store.dispatch(SignInFormAction.success)
                     store.dispatch(AuthenticationAction.signIn(user))
-                    completion?(success: true)
                 case .error(let error):
                     store.dispatch(SignInFormAction.error(error))
-                    completion?(success: false)
                 }
+                future.fill(result)
             }
         }
+
+        future.onCancel {
+            cancelToken.cancel()
+        }
+        
+        return future
     }
 }

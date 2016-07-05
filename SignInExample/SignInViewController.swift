@@ -27,7 +27,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
     var authentication: AuthenticationActionCreator!
 
     var state: SignInState!
-    var signInRequest: Cancelable?
+    var signInRequest: CancelableFuture<User, ServiceError>?
 
     func inject(store store: Store<AppState>, api: SignInService) {
         self.store = store
@@ -85,10 +85,9 @@ class SignInViewController: UIViewController, StoreSubscriber {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
 
-        signInRequest = authentication.signIn(email: email, password: password) { success in
-            if success {
-                self.dismiss()
-            }
+        signInRequest = authentication.signIn(email: email, password: password)
+        signInRequest?.onSuccess { _ in
+            self.dismiss()
         }
     }
 }

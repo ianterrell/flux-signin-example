@@ -27,6 +27,7 @@
 		D920AE411D060E3D002CD8FE /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920AE401D060E3C002CD8FE /* MockAPI.swift */; };
 		D920AE431D0614FF002CD8FE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920AE421D0614FF002CD8FE /* Extensions.swift */; };
 		D963BAD61D2BFA7200F77DA0 /* ActionCreators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963BAD51D2BFA7200F77DA0 /* ActionCreators.swift */; };
+		D963BAE41D2C2FBA00F77DA0 /* Cancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963BAE31D2C2FBA00F77DA0 /* Cancelable.swift */; };
 		D9D3EC2E1D074F320028E3AA /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3EC2D1D074F320028E3AA /* Validation.swift */; };
 		D9DB58211D259E2200B5870F /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DB58201D259E2200B5870F /* Middleware.swift */; };
 		D9FB7EB21D11DD850082E414 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7EB11D11DD850082E414 /* Reducers.swift */; };
@@ -208,6 +209,7 @@
 		D920AE401D060E3C002CD8FE /* MockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
 		D920AE421D0614FF002CD8FE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D963BAD51D2BFA7200F77DA0 /* ActionCreators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCreators.swift; sourceTree = "<group>"; };
+		D963BAE31D2C2FBA00F77DA0 /* Cancelable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancelable.swift; sourceTree = "<group>"; };
 		D9D3EC2D1D074F320028E3AA /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bond.xcodeproj; path = Bond/Bond.xcodeproj; sourceTree = "<group>"; };
 		D9DB58201D259E2200B5870F /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				D963BAD51D2BFA7200F77DA0 /* ActionCreators.swift */,
 				D9FB7EBF1D11DDA60082E414 /* Actions.swift */,
 				D9FB7EB11D11DD850082E414 /* Reducers.swift */,
+				D963BAE31D2C2FBA00F77DA0 /* Cancelable.swift */,
 				D920AE3E1D05FE1C002CD8FE /* API.swift */,
 				D920AE401D060E3C002CD8FE /* MockAPI.swift */,
 				D920AE421D0614FF002CD8FE /* Extensions.swift */,
@@ -759,6 +762,7 @@
 				D9FB7EC01D11DDA60082E414 /* Actions.swift in Sources */,
 				D91A46301D05E9840043D588 /* HomeViewController.swift in Sources */,
 				D9FB7EB21D11DD850082E414 /* Reducers.swift in Sources */,
+				D963BAE41D2C2FBA00F77DA0 /* Cancelable.swift in Sources */,
 				D917DE8C1D0B512E001F56F1 /* State.swift in Sources */,
 				D9D3EC2E1D074F320028E3AA /* Validation.swift in Sources */,
 			);
