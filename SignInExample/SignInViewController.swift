@@ -22,15 +22,10 @@ class SignInViewController: UIViewController, StoreSubscriber {
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
-    var api: SignInService!
     var state: SignInState!
 
-    func inject(api api: SignInService) {
-        self.api = api
-    }
-
     override func viewWillAppear(animated: Bool) {
-        mainStore.subscribe(self)
+        mainStore.subscribe(self) { $0.signInForm }
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -43,8 +38,8 @@ class SignInViewController: UIViewController, StoreSubscriber {
         passwordField.addTarget(self, action: .passwordUpdated, forControlEvents: .EditingChanged)
     }
 
-    func newState(appState: AppState) {
-        state = appState.signInForm
+    func newState(state: SignInState) {
+        self.state = state
         let viewState = ViewState(state: state)
 
         serverErrorLabel.text = state.serverError
@@ -78,24 +73,7 @@ class SignInViewController: UIViewController, StoreSubscriber {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
 
-        mainStore.dispatch(SignInFormAction.requested)
-        api.signIn(email: email, password: password) { [weak self] result in
-            guard let sself = self else {
-                return
-            }
-
-            dispatch_async(dispatch_get_main_queue()) {
-                switch result {
-                case .success(let user):
-                    mainStore.dispatch(SignInFormAction.success)
-                    mainStore.dispatch(AuthenticationAction.signIn(user))
-                    sself.dismiss()
-                    break
-                case .error(let error):
-                    mainStore.dispatch(SignInFormAction.error(error))
-                }
-            }
-        }
+        mainStore.dispatch(SignInFormAction.request(email: email, password: password))
     }
 }
 

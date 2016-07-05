@@ -46,7 +46,7 @@ func signInReducer(action: Action, state: SignInState) -> SignInState {
         if (state.email ?? "").isEmpty {
             state.emailEditedOnce = false
         }
-    case .requested:
+    case .request:
         state.isSigningIn = true
     case .success:
         state.isSigningIn = false

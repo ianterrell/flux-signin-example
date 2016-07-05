@@ -27,6 +27,7 @@
 		D920AE411D060E3D002CD8FE /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920AE401D060E3C002CD8FE /* MockAPI.swift */; };
 		D920AE431D0614FF002CD8FE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D920AE421D0614FF002CD8FE /* Extensions.swift */; };
 		D9D3EC2E1D074F320028E3AA /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D3EC2D1D074F320028E3AA /* Validation.swift */; };
+		D9DB58211D259E2200B5870F /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DB58201D259E2200B5870F /* Middleware.swift */; };
 		D9FB7EB21D11DD850082E414 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7EB11D11DD850082E414 /* Reducers.swift */; };
 		D9FB7EC01D11DDA60082E414 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7EBF1D11DDA60082E414 /* Actions.swift */; };
 		DD1A73DC1D1AD06300BE4FB1 /* SignInSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1A73DB1D1AD06300BE4FB1 /* SignInSnapshotTests.swift */; };
@@ -207,6 +208,7 @@
 		D920AE421D0614FF002CD8FE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D9D3EC2D1D074F320028E3AA /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		D9D3EC2F1D09EC740028E3AA /* Bond.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bond.xcodeproj; path = Bond/Bond.xcodeproj; sourceTree = "<group>"; };
+		D9DB58201D259E2200B5870F /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		D9FB7EB11D11DD850082E414 /* Reducers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducers.swift; sourceTree = "<group>"; };
 		D9FB7EBF1D11DDA60082E414 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		DD1A73DB1D1AD06300BE4FB1 /* SignInSnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInSnapshotTests.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				D91A462F1D05E9840043D588 /* HomeViewController.swift */,
 				D91A462D1D05E9600043D588 /* SignInViewController.swift */,
 				D917DE8B1D0B512E001F56F1 /* State.swift */,
+				D9DB58201D259E2200B5870F /* Middleware.swift */,
 				D9FB7EBF1D11DDA60082E414 /* Actions.swift */,
 				D9FB7EB11D11DD850082E414 /* Reducers.swift */,
 				D920AE3E1D05FE1C002CD8FE /* API.swift */,
@@ -745,6 +748,7 @@
 			files = (
 				D91A462E1D05E9600043D588 /* SignInViewController.swift in Sources */,
 				D920AE431D0614FF002CD8FE /* Extensions.swift in Sources */,
+				D9DB58211D259E2200B5870F /* Middleware.swift in Sources */,
 				D91A46001D05E4CE0043D588 /* AppDelegate.swift in Sources */,
 				D920AE3F1D05FE1C002CD8FE /* API.swift in Sources */,
 				D920AE411D060E3D002CD8FE /* MockAPI.swift in Sources */,

@@ -15,12 +15,6 @@ class HomeViewController: UIViewController, StoreSubscriber {
 
     @IBOutlet var helloLabel: UILabel!
 
-    var api: SignInService!
-
-    func inject(api api: SignInService) {
-        self.api = api
-    }
-
     override func viewWillAppear(animated: Bool) {
         mainStore.subscribe(self)
     }
@@ -39,14 +33,8 @@ class HomeViewController: UIViewController, StoreSubscriber {
         navigationItem.rightBarButtonItem = signedIn ? signOutButton : signInButton
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let signIn: SignInViewController = segue.destinationViewController.injectable() {
-            signIn.inject(api: api)
-        }
-    }
-
     @IBAction func signOut(sender: AnyObject) {
-        api.signOut()
+        mainStore.dispatch(AuthenticationAction.signOut)
     }
 }
 

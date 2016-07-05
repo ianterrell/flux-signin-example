@@ -48,14 +48,11 @@ struct MockAPI: SignInService {
                 return
             }
 
-            dispatch_async(dispatch_get_main_queue()) {
-                mainStore.dispatch(AuthenticationAction.signIn(user.data))
-            }
             completion(.success(user.data))
         }
     }
 
     func signOut() {
-        mainStore.dispatch(AuthenticationAction.signOut)
+        // make believe
     }
 }
