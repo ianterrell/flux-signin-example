@@ -40,13 +40,14 @@ func signInReducer(action: Action, state: SignInState) -> SignInState {
     var state = state
     switch action {
     case .reset:
+        state.isSigningIn = false
         state.password = nil
         state.passwordEditedOnce = false
         state.serverError = nil
         if (state.email ?? "").isEmpty {
             state.emailEditedOnce = false
         }
-    case .request:
+    case .requested:
         state.isSigningIn = true
     case .success:
         state.isSigningIn = false

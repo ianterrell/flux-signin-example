@@ -9,8 +9,6 @@
 import Foundation
 import ReSwift
 
-let mainStore = Store<AppState>(reducer: AppReducer(), state: nil, middleware: [AuthenticationSaga(api: MockAPI()).middleware])
-
 struct AppState: StateType {
     var user: User?
     var signInForm = SignInState()

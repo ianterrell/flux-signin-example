@@ -15,7 +15,7 @@ enum AuthenticationAction: Action {
 }
 
 enum SignInFormAction: Action {
-    case request(email: String, password: String)
+    case requested //(email: String, password: String)
     case success
     case error(ServiceError)
     case reset

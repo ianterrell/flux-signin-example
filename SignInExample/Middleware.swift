@@ -19,20 +19,20 @@ final class AuthenticationSaga {
     func middleware(dispatch: DispatchFunction?, getState: GetState?) -> (DispatchFunction -> DispatchFunction) {
         return { next in
             return { [api = self.api] action in
-                if case let SignInFormAction.request(email, password) = action {
-                    api.signIn(email: email, password: password) { result in
-                        dispatch_async(dispatch_get_main_queue()) {
-                            switch result {
-                            case .success(let user):
-                                dispatch?(SignInFormAction.success)
-                                dispatch?(AuthenticationAction.signIn(user))
-                                break
-                            case .error(let error):
-                                dispatch?(SignInFormAction.error(error))
-                            }
-                        }
-                    }
-                }
+//                if case let SignInFormAction.request(email, password) = action {
+//                    api.signIn(email: email, password: password) { result in
+//                        dispatch_async(dispatch_get_main_queue()) {
+//                            switch result {
+//                            case .success(let user):
+//                                dispatch?(SignInFormAction.success)
+//                                dispatch?(AuthenticationAction.signIn(user))
+//                                break
+//                            case .error(let error):
+//                                dispatch?(SignInFormAction.error(error))
+//                            }
+//                        }
+//                    }
+//                }
 
                 if case AuthenticationAction.signOut = action {
                     api.signOut()
@@ -41,5 +41,9 @@ final class AuthenticationSaga {
                 return next(action)
             }
         }
+    }
+
+    func signIn(email: String, password: String) {
+
     }
 }

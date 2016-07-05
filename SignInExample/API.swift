@@ -30,12 +30,16 @@ final class Box<T> {
 
 // MARK: - API
 
+protocol Cancelable {
+    func cancel()
+}
+
 protocol ServiceError: ErrorType {
     var message: String { get }
 }
 
 protocol SignInService {
-    func signIn(email email: String, password: String, completion: Result<User,ServiceError>->())
+    func signIn(email email: String, password: String, completion: Result<User,ServiceError>->()) -> Cancelable
     func signOut()
 }
 

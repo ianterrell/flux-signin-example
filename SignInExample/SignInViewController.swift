@@ -22,15 +22,27 @@ class SignInViewController: UIViewController, StoreSubscriber {
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
+    var store: Store<AppState>!
+    var api: SignInService!
+    var authentication: AuthenticationActionCreator!
+
     var state: SignInState!
+    var signInRequest: Cancelable?
+
+    func inject(store store: Store<AppState>, api: SignInService) {
+        self.store = store
+        self.api = api
+        self.authentication = AuthenticationActionCreator(store: store, api: api)
+    }
 
     override func viewWillAppear(animated: Bool) {
-        mainStore.subscribe(self) { $0.signInForm }
+        store.subscribe(self) { $0.signInForm }
     }
 
     override func viewWillDisappear(animated: Bool) {
-        mainStore.dispatch(SignInFormAction.reset)
-        mainStore.unsubscribe(self)
+        store.dispatch(SignInFormAction.reset)
+        store.unsubscribe(self)
+        signInRequest?.cancel()
     }
 
     override func viewDidLoad() {
@@ -73,7 +85,11 @@ class SignInViewController: UIViewController, StoreSubscriber {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
 
-        mainStore.dispatch(SignInFormAction.request(email: email, password: password))
+        signInRequest = authentication.signIn(email: email, password: password) { success in
+            if success {
+                self.dismiss()
+            }
+        }
     }
 }
 
@@ -97,11 +113,11 @@ extension SignInViewController {
 
 extension SignInViewController {
     func emailUpdated() {
-        mainStore.dispatch(SignInFormAction.emailUpdated(emailField.text ?? ""))
+        store.dispatch(SignInFormAction.emailUpdated(emailField.text ?? ""))
     }
 
     func passwordUpdated() {
-        mainStore.dispatch(SignInFormAction.passwordUpdated(passwordField.text ?? ""))
+        store.dispatch(SignInFormAction.passwordUpdated(passwordField.text ?? ""))
     }
 }
 
@@ -124,9 +140,9 @@ extension SignInViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         switch textField {
         case emailField:
-            mainStore.dispatch(SignInFormAction.emailEdited)
+            store.dispatch(SignInFormAction.emailEdited)
         case passwordField:
-            mainStore.dispatch(SignInFormAction.passwordEdited)
+            store.dispatch(SignInFormAction.passwordEdited)
         default:
             break
         }

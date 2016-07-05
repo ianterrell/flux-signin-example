@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let store = Store<AppState>(reducer: AppReducer(), state: nil, middleware: [])
+        let api = MockAPI()
+
         if let home: HomeViewController = window?.rootViewController?.injectable() {
-            home.inject(api: MockAPI())
+            home.inject(store: store, api: api)
         }
 
         return true

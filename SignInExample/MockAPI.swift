@@ -28,28 +28,51 @@ struct MockAPI: SignInService {
         }
     }
 
-    func signIn(email email: String, password: String, completion: Result<User,ServiceError>->()) {
+    final class CancelToken: Cancelable {
+        var completion: (Result<User,ServiceError>->())?
+        var canceled = false
+
+        init(completion: Result<User,ServiceError>->()) {
+            self.completion = completion
+        }
+        func cancel() {
+            canceled = true
+        }
+
+        func completion(result: Result<User,ServiceError>) {
+            if !canceled {
+                completion?(result)
+            }
+            completion = nil
+        }
+    }
+
+    func signIn(email email: String, password: String, completion: Result<User,ServiceError>->()) -> Cancelable {
+        let cancelable = CancelToken(completion: completion)
+
         let constantResponseTime: Int64 = 100
         let variableResponseTime = Int64(arc4random_uniform(1400))
         let responseTime = dispatch_time(DISPATCH_TIME_NOW, (constantResponseTime + variableResponseTime) * Int64(NSEC_PER_MSEC))
         dispatch_after(responseTime, dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) {
             guard password != "500error" else {
-                completion(.error(Error.serverError))
+                cancelable.completion(.error(Error.serverError))
                 return
             }
 
             guard let user = MockAPI.users[email] else {
-                completion(.error(Error.noSuchUser))
+                cancelable.completion(.error(Error.noSuchUser))
                 return
             }
 
             guard user.password == password else {
-                completion(.error(Error.invalidPassword))
+                cancelable.completion(.error(Error.invalidPassword))
                 return
             }
 
-            completion(.success(user.data))
+            cancelable.completion(.success(user.data))
         }
+
+        return cancelable
     }
 
     func signOut() {

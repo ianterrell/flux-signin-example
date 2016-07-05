@@ -15,12 +15,26 @@ class HomeViewController: UIViewController, StoreSubscriber {
 
     @IBOutlet var helloLabel: UILabel!
 
+    var store: Store<AppState>!
+    var api: SignInService!
+
+    func inject(store store: Store<AppState>, api: SignInService) {
+        self.store = store
+        self.api = api
+    }
+
     override func viewWillAppear(animated: Bool) {
-        mainStore.subscribe(self)
+        store.subscribe(self)
     }
 
     override func viewWillDisappear(animated: Bool) {
-        mainStore.unsubscribe(self)
+        store.unsubscribe(self)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let signIn: SignInViewController = segue.destinationViewController.injectable() {
+            signIn.inject(store: store, api: api)
+        }
     }
 
     func newState(state: AppState) {
@@ -34,7 +48,7 @@ class HomeViewController: UIViewController, StoreSubscriber {
     }
 
     @IBAction func signOut(sender: AnyObject) {
-        mainStore.dispatch(AuthenticationAction.signOut)
+        store.dispatch(AuthenticationAction.signOut)
     }
 }
 
