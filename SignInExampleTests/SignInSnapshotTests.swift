@@ -9,13 +9,14 @@
 import Foundation
 import UIKit
 import FBSnapshotTestCase
-
+import ReSwift
 @testable import SignInExample
 
 class SignInSnapshotTests: FBSnapshotTestCase {
 
     static var controller: SignInViewController!
     static var window: UIWindow!
+    static let store = Store<AppState>(reducer: AppReducer(), state: nil, middleware: [])
 
     var state = AppState()
 
@@ -32,7 +33,7 @@ class SignInSnapshotTests: FBSnapshotTestCase {
         super.setUp()
 
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SignInViewController") as! SignInViewController
-        controller.inject(api: MockAPI())
+        controller.inject(store: store, api: MockAPI())
 
         UIApplication.sharedApplication().keyWindow?.rootViewController = UINavigationController(rootViewController: controller)
         controller.loadViewIfNeeded()
@@ -46,7 +47,7 @@ class SignInSnapshotTests: FBSnapshotTestCase {
     }
 
     override func tearDown() {
-        SignInSnapshotTests.controller.newState(state)
+        SignInSnapshotTests.controller.newState(state.signInForm)
         FBSnapshotVerifyView(SignInSnapshotTests.window)
     }
 

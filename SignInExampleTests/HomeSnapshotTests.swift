@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FBSnapshotTestCase
+import ReSwift
 
 @testable import SignInExample
 
@@ -16,6 +17,7 @@ class HomeSnapshotTests: FBSnapshotTestCase {
     
     static var controller: HomeViewController!
     static var window: UIWindow!
+    static let store = Store<AppState>(reducer: AppReducer(), state: nil, middleware: [])
 
     var state = AppState()
 
@@ -23,7 +25,7 @@ class HomeSnapshotTests: FBSnapshotTestCase {
         super.setUp()
 
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
-        controller.inject(api: MockAPI())
+        controller.inject(store: store, api: MockAPI())
 
         UIApplication.sharedApplication().keyWindow?.rootViewController = UINavigationController(rootViewController: controller)
         controller.loadViewIfNeeded()

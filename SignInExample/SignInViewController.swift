@@ -86,8 +86,8 @@ class SignInViewController: UIViewController, StoreSubscriber {
         passwordField.resignFirstResponder()
 
         signInRequest = authentication.signIn(email: email, password: password)
-        signInRequest?.onSuccess { _ in
-            self.dismiss()
+        signInRequest?.onSuccess { [weak self] _ in
+            self?.dismiss()
         }
     }
 }
